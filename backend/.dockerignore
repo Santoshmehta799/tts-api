@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Runtime generated files
+request_files/
+audio_files/
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+
+# Temp files
+*.log
+*.tmp

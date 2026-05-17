@@ -1,0 +1,23 @@
+[Unit]
+Description=EdgeTTS Text to Voice Backend for Speechma
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/backend
+EnvironmentFile=/var/www/backend/.env
+
+ExecStartPre=/bin/mkdir -p /var/www/backend/audio_files
+ExecStartPre=/bin/mkdir -p /var/www/backend/logs
+ExecStart=/var/www/backend/venv/bin/gunicorn main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 --timeout 180
+
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+#CPUQuota=60%
+#MemoryMax=800M
+
+[Install]
+WantedBy=multi-user.target
