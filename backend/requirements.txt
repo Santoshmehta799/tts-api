@@ -8,7 +8,7 @@ attrs==25.3.0
 bidict==0.23.1
 certifi==2025.4.26
 click==8.2.0
-edge-tts==7.0.2
+edge-tts==7.2.8
 fastapi==0.115.12
 frozenlist==1.6.0
 gunicorn==23.0.0
