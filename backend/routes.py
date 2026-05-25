@@ -15,7 +15,7 @@ from job_management.tts_processor import AUDIO_DIR
 load_dotenv()
 
 # Load text length constraints from environment
-MAX_TEXT_LENGTH = int(os.getenv('MAX_TEXT_LENGTH', '14000'))
+MAX_TEXT_LENGTH = int(os.getenv('MAX_TEXT_LENGTH', '50000'))
 MIN_TEXT_LENGTH = int(os.getenv('MIN_TEXT_LENGTH', '2'))
 
 router = APIRouter()

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # Load .env file before reading environment variables
 load_dotenv()
 
-MAX_TEXT_LENGTH = int(os.getenv('MAX_TEXT_LENGTH', '14000'))
+MAX_TEXT_LENGTH = int(os.getenv('MAX_TEXT_LENGTH', '50000'))
 
 class TTSRequestModel(BaseModel):
     text: str
