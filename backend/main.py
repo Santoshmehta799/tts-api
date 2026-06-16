@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from job_management import JobManager
 from routes import router, initialize_router
 from urllib.parse import urlparse
-import asyncio  # <-- add this
+import asyncio
 
 load_dotenv()
 
@@ -16,7 +16,7 @@ load_dotenv()
 MAX_CONCURRENT_REQUESTS = int(os.getenv('MAX_CONCURRENT_REQUESTS', '50'))
 WEBHOOK_URL = os.getenv('WEBHOOK_URL', '')
 API_KEY = os.getenv('API_KEY')
-AUTO_DELETE_DELAY = int(os.getenv('AUTO_DELETE_DELAY', '300'))  # 5 minutes default
+AUTO_DELETE_DELAY = int(os.getenv('AUTO_DELETE_DELAY', '300'))
 
 if not API_KEY:
     raise ValueError("API_KEY must be set in environment variables")

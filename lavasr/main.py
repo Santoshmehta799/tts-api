@@ -1,13 +1,32 @@
-from fastapi import FastAPI, UploadFile, File, Form
+import os
+from fastapi import FastAPI, UploadFile, File, Form, Security, HTTPException, Depends
 from fastapi.responses import FileResponse
+from fastapi.security.api_key import APIKeyHeader
+from dotenv import load_dotenv
 from LavaSR.model import LavaEnhance2
 import soundfile as sf
 import uuid
 
+load_dotenv()
+
+# API Key from .env
+API_KEY = os.getenv("API_KEY")
+
+if not API_KEY:
+    raise ValueError("API_KEY must be set in environment variables")
+
+# API Key Security
+api_key_header = APIKeyHeader(name="api-key", auto_error=True)
+
+async def get_api_key(api_key: str = Security(api_key_header)):
+    if api_key != API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid API key")
+    return api_key
+
 app = FastAPI(
     title="LavaSR API",
-    version="1.0.0"
-)
+    version="1.0.0",
+    dependencies=[Depends(get_api_key)])
 
 print("Loading LavaSR model...")
 model = LavaEnhance2("YatharthS/LavaSR", "cpu")
